@@ -27,6 +27,12 @@ jobs:
           FSS_API_KEY: ${{ secrets.FSS_API_KEY }} # GitHub Secret을 환경 변수로 전달
         run: python Chapter_10/update_jobs.py
 
+      - name: Display README content for debugging
+        run: |
+          echo "--- Content of Chapter_10/README.md after script run ---"
+          cat Chapter_10/README.md
+          echo "--------------------------------------------------------"
+
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
