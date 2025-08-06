@@ -57,7 +57,7 @@ def update_readme(markdown_content):
         with open(readme_path, 'r', encoding='utf-8') as f:
             readme_content = f.read()
 
-        header = f"## 📅 금융권 채용 공고 (최근 업데이트: {datetime.date.today().strftime('%Y-%m-%d')})\n\n"
+        header = f"## 📅 금융권 채용 공고 (최근 업데이트: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')})\n\n"
         new_content = f"""{placeholder_start}\n{header}{markdown_content}\n{placeholder_end}"""
         
         if placeholder_start in readme_content and placeholder_end in readme_content:
