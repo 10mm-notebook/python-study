@@ -49,7 +49,7 @@ def generate_markdown_section(title, jobs):
 
 def update_readme(markdown_content):
     """README.md 파일의 특정 부분을 찾아 새로운 내용으로 교체합니다."""
-    readme_path = 'Chapter_10/README.md'
+    readme_path = 'README.md'
     placeholder_start = "<!-- START_JOBS -->"
     placeholder_end = "<!-- END_JOBS -->"
     

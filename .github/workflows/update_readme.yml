@@ -25,7 +25,7 @@ jobs:
       - name: Run script to update README
         env:
           FSS_API_KEY: ${{ secrets.FSS_API_KEY }} # GitHub Secret을 환경 변수로 전달
-        run: python update_jobs.py
+        run: python Chapter_10/update_jobs.py
 
       - name: Commit and push changes
         run: |
