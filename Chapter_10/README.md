@@ -1,6 +1,7 @@
 # 금융권 채용 공고 자동 업데이트 프로젝트
 
 이 프로젝트는 금융감독원의 채용 정보 API를 활용하여 금융권 채용 공고를 정기적으로 수집하고, GitHub 레포지토리의 README 파일에 자동으로 업데이트하는 파이프라인입니다.
+API 출처 : https://www.fss.or.kr/fss/main/contents.do?menuNo=200269
 
 ## 주요 기능
 
