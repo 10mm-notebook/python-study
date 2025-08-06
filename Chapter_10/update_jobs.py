@@ -1,3 +1,5 @@
+
+
 import os
 import requests
 import datetime
@@ -44,7 +46,7 @@ def generate_markdown_section(title, jobs):
         # 마감일이 없는 경우 '채용 시'로 표시
         end_day = job.get('recpEndDay', 'N/A')
         if not end_day or end_day == 'N/A':
-            end_day = '채용시'
+            end_day = '채용 시'
 
         link = job.get('siteUrl') if job.get('siteUrl') else job.get('originUrl', '#')
         table += f"| {job.get('instNm', 'N/A')} | {title_text} | {end_day} | [바로가기]({link}) |\n"
@@ -89,13 +91,37 @@ if __name__ == "__main__":
         raise ValueError("API 키가 환경 변수(FSS_API_KEY)에 설정되지 않았습니다.")
     
     today = datetime.date.today()
-    
-    # API에서 넓은 범위의 공고를 가져옵니다 (예: 2달 전부터 1달 후까지)
-    # 이렇게 해야 마감일이 없는 공고나 최근 마감된 공고를 모두 포함할 수 있습니다.
-    fetch_start_date = today - datetime.timedelta(days=60) # 2달 전
-    fetch_end_date = today + datetime.timedelta(days=30) # 1달 후
-    
-    all_jobs = fetch_job_postings(api_key, fetch_start_date.strftime('%Y-%m-%d'), fetch_end_date.strftime('%Y-%m-%d'))
+
+    all_fetched_jobs = {} # Use a dictionary to store jobs by appformNo for deduplication
+
+    # Fetch data for the past year in 30-day chunks
+    # Start from 1 month in the future to cover current jobs and go back 1 year
+    current_date_iterator = today + datetime.timedelta(days=30) 
+    end_of_historical_period = today - datetime.timedelta(days=365) 
+
+    while current_date_iterator > end_of_historical_period:
+        interval_end_date = current_date_iterator
+        interval_start_date = interval_end_date - datetime.timedelta(days=30)
+
+        # Ensure start date doesn't go beyond the desired historical period
+        if interval_start_date < end_of_historical_period:
+            interval_start_date = end_of_historical_period
+
+        print(f"Fetching jobs from {interval_start_date.strftime('%Y-%m-%d')} to {interval_end_date.strftime('%Y-%m-%d')}")
+        jobs_in_interval = fetch_job_postings(
+            api_key,
+            interval_start_date.strftime('%Y-%m-%d'),
+            interval_end_date.strftime('%Y-%m-%d')
+        )
+
+        for job in jobs_in_interval:
+            appform_no = job.get('appformNo')
+            if appform_no:
+                all_fetched_jobs[appform_no] = job # Add or update job, effectively deduplicating
+
+        current_date_iterator = interval_start_date - datetime.timedelta(days=1) # Move to the day before the start of the current interval
+
+    all_jobs = list(all_fetched_jobs.values()) # Convert dictionary values back to a list
 
     current_jobs = []
     closed_jobs = []
