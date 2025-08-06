@@ -63,7 +63,9 @@ def update_readme(markdown_content):
         else:
             intro_content = full_content # 플레이스홀더가 없으면 전체를 소개글로 간주
 
-        header = f"## 📅 금융권 채용 공고 (최근 업데이트: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')})\n\n"
+        now_utc = datetime.datetime.utcnow()
+        now_kst = now_utc + datetime.timedelta(hours=9)
+        header = f"## 📅 금융권 채용 공고 (최근 업데이트: {now_kst.strftime('%Y-%m-%d %H:%M:%S')})\n\n"
         jobs_section = f"{placeholder_start}\n{header}{markdown_content}\n{placeholder_end}"
 
         final_content = intro_content + jobs_section
