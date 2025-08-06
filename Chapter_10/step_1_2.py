@@ -3,18 +3,24 @@ from pathlib import Path
 import pandas as pd
 from datakart import Fss
 
-from step_1_1 import OUT_DIR  # 이전에 작성한 모듈을 불러옵니다.
+from step_1_1 import OUT_DIR 
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+FSS_KEY=os.getenv('FSS_KEY')
 
 OUT_1_2 = OUT_DIR / f"{Path(__file__).stem}.xlsx"
 
 
-def deposit_info_to_xlsx():
-    FSS_KEY = "c4ee3770112860944ca7c4dd16001aa5"  # 금융감독원 정기예금 API 인증키 입력
-    fss = Fss(FSS_KEY)  # Fss 객체 생성
+def deposit_info_to_xlsx(): 
+    fss = Fss(FSS_KEY)  
     resp = fss.deposit_search(fin_grp="은행", intr_rate_type="단리", save_trm="12", join_member="제한없음")  # API 호출
-    df_raw = pd.DataFrame(resp)  # 데이터프레임 생성
-    df_raw.to_excel(OUT_1_2, index=False)  # 엑셀 파일로 저장
+    df_raw = pd.DataFrame(resp) 
+    df_raw.to_excel(OUT_1_2, index=False) 
 
 
 if __name__ == "__main__":
-    deposit_info_to_xlsx()  # 정기예금 금리 데이터 수집
+    deposit_info_to_xlsx()  
