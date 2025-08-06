@@ -44,7 +44,7 @@ def generate_markdown_section(title, jobs):
         # 마감일이 없는 경우 '채용 시'로 표시
         end_day = job.get('recpEndDay', 'N/A')
         if not end_day or end_day == 'N/A':
-            end_day = '채용 시'
+            end_day = '채용시'
 
         link = job.get('siteUrl') if job.get('siteUrl') else job.get('originUrl', '#')
         table += f"| {job.get('instNm', 'N/A')} | {title_text} | {end_day} | [바로가기]({link}) |\n"
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     
     # API에서 넓은 범위의 공고를 가져옵니다 (예: 2달 전부터 1달 후까지)
     # 이렇게 해야 마감일이 없는 공고나 최근 마감된 공고를 모두 포함할 수 있습니다.
-    fetch_start_date = today - datetime.timedelta(days=365) # 1년 전
+    fetch_start_date = today - datetime.timedelta(days=60) # 2달 전
     fetch_end_date = today + datetime.timedelta(days=30) # 1달 후
     
     all_jobs = fetch_job_postings(api_key, fetch_start_date.strftime('%Y-%m-%d'), fetch_end_date.strftime('%Y-%m-%d'))
