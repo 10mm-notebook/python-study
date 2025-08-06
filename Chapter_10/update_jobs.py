@@ -1,3 +1,5 @@
+
+
 import os
 import requests
 import datetime
@@ -19,7 +21,6 @@ def fetch_job_postings(api_key, start_date, end_date):
         if data.get("reponse", {}).get("resultCode") == "1":
             return data["reponse"].get("result", [])
         else:
-            # "자료가 없습니다"는 정상적인 빈 응답이므로 오류로 출력하지 않음
             if data.get("reponse", {}).get("resultMsg") != "자료가 없습니다.":
                  print(f"API Error: {data.get('reponse', {}).get('resultMsg', 'Unknown error')}")
             return []
@@ -48,32 +49,32 @@ def generate_markdown_section(title, jobs):
     return table
 
 def update_readme(markdown_content):
-    """README.md 파일의 특정 부분을 찾아 새로운 내용으로 교체합니다."""
-    readme_path = 'README.md'
+    """README.md 파일의 내용을 새로운 채용 공고로 교체합니다."""
+    readme_path = 'Chapter_10/README.md'
     placeholder_start = "<!-- START_JOBS -->"
     placeholder_end = "<!-- END_JOBS -->"
-    
+
     try:
         with open(readme_path, 'r', encoding='utf-8') as f:
-            readme_content = f.read()
+            full_content = f.read()
+
+        if placeholder_start in full_content:
+            intro_content = full_content.split(placeholder_start)[0]
+        else:
+            intro_content = full_content # 플레이스홀더가 없으면 전체를 소개글로 간주
 
         header = f"## 📅 금융권 채용 공고 (최근 업데이트: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')})\n\n"
-        new_content = f"""{placeholder_start}\n{header}{markdown_content}\n{placeholder_end}"""
-        
-        if placeholder_start in readme_content and placeholder_end in readme_content:
-            pattern = re.compile(f"{placeholder_start}.*?{placeholder_end}", re.DOTALL)
-            updated_readme = pattern.sub(new_content, readme_content)
-        else:
-            updated_readme = readme_content + "\n" + new_content
+        jobs_section = f"{placeholder_start}\n{header}{markdown_content}\n{placeholder_end}"
+
+        final_content = intro_content + jobs_section
 
         with open(readme_path, 'w', encoding='utf-8') as f:
-            f.write(updated_readme)
-        print("README.md updated successfully.")
+            f.write(final_content)
+        
+        print(f"Successfully wrote {len(final_content)} characters to {readme_path}")
 
     except FileNotFoundError:
-        print(f"Error: {readme_path} not found. Creating a new one.")
-        with open(readme_path, 'w', encoding='utf-8') as f:
-            f.write(f"""<!-- START_JOBS -->\n{header}\n{markdown_content}\n<!-- END_JOBS -->""")
+        print(f"Error: {readme_path} not found. Cannot update.")
 
 
 if __name__ == "__main__":
@@ -84,17 +85,14 @@ if __name__ == "__main__":
     
     today = datetime.date.today()
     
-    # 1. 진행 중인 공고 (오늘 ~ 1달 후)
     start_current = today
     end_current = today + datetime.timedelta(days=30)
     current_jobs = fetch_job_postings(api_key, start_current.strftime('%Y-%m-%d'), end_current.strftime('%Y-%m-%d'))
     
-    # 2. 최근 마감된 공고 (1달 전 ~ 어제)
     end_closed = today - datetime.timedelta(days=1)
     start_closed = end_closed - datetime.timedelta(days=30)
     closed_jobs = fetch_job_postings(api_key, start_closed.strftime('%Y-%m-%d'), end_closed.strftime('%Y-%m-%d'))
 
-    # 마크다운 생성
     current_section = generate_markdown_section("🚀 진행 중인 공고", current_jobs)
     closed_section = generate_markdown_section("✅ 최근 마감된 공고", closed_jobs)
     
