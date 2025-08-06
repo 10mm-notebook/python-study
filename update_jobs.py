@@ -39,20 +39,15 @@ def generate_markdown_table(jobs):
     if not jobs:
         return "이번 주에 새로운 채용 공고가 없습니다."
 
-    header = f"## 📅 주간 금융권 채용 공고 ({datetime.date.today().strftime('%Y-%m-%d')})
-
-"
-    table = "| 기관명 | 제목 | 마감일 | 링크 |
-"
-    table += "|---|---|---|---|
-"
+    header = f"## 📅 주간 금융권 채용 공고 ({datetime.date.today().strftime('%Y-%m-%d')})\n\n"
+    table = "| 기관명 | 제목 | 마감일 | 링크 |\n"
+    table += "|---|---|---|---|\n"
     
     for job in jobs:
         title = job.get('titl', 'N/A').replace('\n', ' ').strip()
         # URL이 없는 경우 원본 게시글 URL을 사용
         link = job.get('siteUrl') if job.get('siteUrl') else job.get('originUrl', '#')
-        table += f"| {job.get('instNm', 'N/A')} | {title} | {job.get('recpEndDay', 'N/A')} | [바로가기]({link}) |
-"
+        table += f"| {job.get('instNm', 'N/A')} | {title} | {job.get('recpEndDay', 'N/A')} | [바로가기]({link}) |\n"
         
     return header + table
 
@@ -67,9 +62,9 @@ def update_readme(markdown_content):
             readme_content = f.read()
 
         # 정규 표현식을 사용하여 플레이스홀더 사이의 내용을 교체
-        new_content = f"{placeholder_start}
+        new_content = f"""{placeholder_start}
 {markdown_content}
-{placeholder_end}"
+{placeholder_end}"""
         
         # 플레이스홀더가 있는지 확인하고 교체
         if placeholder_start in readme_content and placeholder_end in readme_content:
@@ -77,8 +72,7 @@ def update_readme(markdown_content):
             updated_readme = pattern.sub(new_content, readme_content)
         else:
             # 플레이스홀더가 없으면 파일 끝에 추가
-            updated_readme = readme_content + "
-" + new_content
+            updated_readme = readme_content + "\n" + new_content
 
         with open(readme_path, 'w', encoding='utf-8') as f:
             f.write(updated_readme)
@@ -87,9 +81,9 @@ def update_readme(markdown_content):
     except FileNotFoundError:
         print(f"Error: {readme_path} not found. Creating a new one.")
         with open(readme_path, 'w', encoding='utf-8') as f:
-            f.write(f"<!-- START_JOBS -->
+            f.write(f"""<!-- START_JOBS -->
 {markdown_content}
-<!-- END_JOBS -->")
+<!-- END_JOBS -->""")
 
 
 if __name__ == "__main__":
