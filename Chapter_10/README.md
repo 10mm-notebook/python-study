@@ -1,137 +1,124 @@
-# 금융권 채용 공고 자동 업데이트 프로젝트
+# Chapter 10: 금융 API를 활용한 금리 정보 수집 및 문서 생성
 
-이 프로젝트는 금융감독원의 채용 정보 API를 활용하여 금융권 채용 공고를 정기적으로 수집하고, GitHub 레포지토리의 README 파일에 자동으로 업데이트하는 파이프라인입니다.
+## 개요
 
-API 출처 : https://www.fss.or.kr/fss/main/contents.do?menuNo=200269
+이 챕터는 **"혼자 공부하는 파이썬"** 책의 내용을 기반으로, 금융감독원 FSS API와 한국은행 ECOS API를 활용하여 금융 상품 정보 및 금리 데이터를 수집하고, 수집한 데이터를 Word 문서로 자동 생성하는 프로젝트입니다.
+
+또한, 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 금융권 채용 공고를 자동으로 수집하고 README에 업데이트하는 미니프로젝트도 포함되어 있습니다.
+
+## 학습 내용
+
+- **금융 API 활용**: 금융감독원 FSS API와 한국은행 ECOS API를 통한 금융 데이터 수집
+- **데이터 수집**: 정기예금, 정기적금, 대출 금리 등 다양한 금융 상품 정보 수집
+- **데이터 시각화**: 금리 추이를 그래프로 시각화
+- **문서 자동 생성**: Python-docx를 활용한 Word 문서 자동 생성
+- **자동화 미니프로젝트**: 책에서 배운 FSS API와 수업에서 배운 GitHub Actions + crontab을 응용한 채용 공고 자동 업데이트 시스템
+
+## 프로젝트 구조
+
+```
+Chapter_10/
+├── img/                 # 금리 추이 그래프 이미지 저장 디렉터리
+│   ├── 산금채.png
+│   ├── 정기예금.png
+│   ├── 정기적금.png
+│   ├── 일반신용대출.png
+│   └── 주택담보대출.png
+├── output/              # 결과 파일 저장 디렉터리
+│   ├── step_1_2.xlsx   # 정기예금 상품 정보 (Excel)
+│   ├── step_2_1.xlsx   # 주요 금리 지표 데이터 (Excel, 다중 시트)
+│   ├── step_3_1.docx   # Word 문서 기본 템플릿
+│   ├── step_3_2.docx   # 제목이 추가된 문서
+│   ├── step_3_3.docx   # 주요 금리 현황이 추가된 문서
+│   └── step_3_4.docx   # 정기예금 상품 정보가 추가된 최종 문서
+├── .github/
+│   └── workflows/
+│       └── update_readme.yml  # GitHub Actions 워크플로우
+├── step_1_1.py         # 디렉터리 생성
+├── step_1_2.py         # 금융감독원 FSS API를 통한 정기예금 정보 수집
+├── step_2_1.py         # ECOS API를 통한 주요 금리 지표 수집
+├── step_2_2.py         # 금리 추이 그래프 생성
+├── step_3_1.py         # Word 문서 기본 템플릿 생성
+├── step_3_2.py         # 문서 제목 추가
+├── step_3_3.py         # 주요 금리 현황 표 및 그래프 삽입
+├── step_3_4.py         # 정기예금 상품 정보 표 삽입
+└── update_jobs.py      # 금융권 채용 공고 수집 및 README 업데이트 스크립트
+```
+
+## 실행 순서
+
+### 금리 정보 수집 및 문서 생성
+
+1. **`step_1_1.py`**: `img`와 `output` 폴더를 생성합니다.
+2. **`step_1_2.py`**: 금융감독원 FSS API를 통해 정기예금 상품 정보를 수집하여 Excel로 저장합니다.
+3. **`step_2_1.py`**: ECOS API를 통해 주요 금리 지표(산금채, 정기예금, 정기적금, 일반신용대출, 주택담보대출)를 수집하여 Excel로 저장합니다.
+4. **`step_2_2.py`**: 각 금리 지표의 최근 24개월 추이를 그래프로 시각화하여 이미지로 저장합니다.
+5. **`step_3_1.py`**: Word 문서의 기본 템플릿을 생성합니다.
+6. **`step_3_2.py`**: 문서에 제목을 추가합니다.
+7. **`step_3_3.py`**: 주요 금리 현황 표와 그래프를 삽입합니다.
+8. **`step_3_4.py`**: 정기예금 상품 정보 표를 삽입하여 최종 문서를 완성합니다.
+
+### 채용 공고 자동 업데이트 (미니프로젝트)
+
+이 기능은 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab 스케줄링을 응용하여 만든 미니프로젝트입니다.
+
+- **`update_jobs.py`**: 금융감독원 채용 정보 API를 호출하여 채용 공고를 수집하고 README를 업데이트합니다.
+- GitHub Actions의 cron 스케줄을 활용하여 매주 월요일 자동으로 실행됩니다.
 
 ## 주요 기능
 
-- **자동화**: GitHub Actions를 통해 매주 월요일 자동으로 최신 채용 정보를 가져옵니다.
-- **정보 제공**: 현재 진행 중인 공고와 최근 마감된 공고를 구분하여 보여줍니다.
-- **간편한 확인**: GitHub 레포지토리를 방문하는 것만으로 최신 채용 현황을 쉽게 파악할 수 있습니다.
+### 금융 데이터 수집
+- 금융감독원 FSS API를 통한 정기예금 상품 정보 수집
+- 한국은행 ECOS API를 통한 주요 금리 지표 수집
+- 다양한 금융 상품의 금리 정보 조회
 
----
+### 데이터 시각화
+- 최근 24개월 금리 추이를 그래프로 시각화
+- 상승/하락에 따른 색상 구분 (상승: 빨간색, 하락: 파란색)
+- 최소값 기준 영역 채우기
 
-<!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-01-12 10:59:35)
+### 문서 자동 생성
+- Python-docx를 활용한 Word 문서 자동 생성
+- 한글 폰트 설정 (Malgun Gothic)
+- 표 삽입 및 스타일링
+- 이미지 삽입 및 정렬
 
-### 🚀 진행 중인 공고
+### 채용 공고 자동화 (미니프로젝트)
+- 책에서 배운 금융감독원 FSS API를 활용한 채용 정보 수집
+- 진행 중인 공고와 마감된 공고 구분
+- 수업에서 배운 GitHub Actions + crontab을 응용한 자동 스케줄링
 
-| 기관명 | 제목 | 마감일 | 링크 |
-|---|---|---|---|
-| 로버스트자산운용 | 경영관리팀 채용 | 9999-12-31 | [바로가기](http://robust.co.kr/) |
-| 로버스트자산운용 | 펀드 직접판매 관련 채용 | 9999-12-31 | [바로가기](http://robust.co.kr/) |
-| 로버스트자산운용 | 경영관리팀장 채용 | 9999-12-31 | [바로가기](http://robust.co.kr/) |
-| 트러스톤자산운용 | 컴플라이언스 경력 채용 | 9999-12-31 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=33787&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 트러스톤자산운용 | 채권운용 경력 채용 | 9999-12-31 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=33628&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 트러스톤자산운용 | 마케팅 신입/경력 채용 | 9999-12-31 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=33171&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국투자신탁운용 | 해외투자지원부 경력직원 채용공고&#40;~1/25&#41; | 2026-01-25 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+## 필요 라이브러리
 
-### ✅ 최근 마감된 공고
+- `datakart`: 공공 API 데이터 수집 라이브러리
+- `pandas`: 데이터 처리 및 분석
+- `matplotlib`: 그래프 시각화
+- `python-docx`: Word 문서 생성
+- `python-dotenv`: 환경 변수 관리
+- `openpyxl`: Excel 파일 읽기/쓰기
+- `requests`: HTTP 요청 (채용 공고 수집)
 
-| 기관명 | 제목 | 마감일 | 링크 |
-|---|---|---|---|
-| 더블저축은행 본점 | 2026년 수시 채용 | 2026-01-11 | [바로가기](http://www.saramin.co.kr/zf_user/jobs/view/preview?rec_idx=52711195) |
-| 키움캐피탈 | 관리부문&#40;회계/심사/준법&#41; 정규직&#40;경력&#41; 채용공고 | 2026-01-11 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=52680060&view_type=etc&ref=recruit_manage) |
-| 키움캐피탈 | 신입사원 공개채용 | 2026-01-11 | [바로가기](https://kiwoomcapital.applyin.co.kr/jobs/20588) |
-| 키움캐피탈 | 영업부문&#40;기업금융/투자금융&#41; 정규직 채용공고 | 2026-01-11 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=52680109&view_type=etc&ref=recruit_manage) |
-| 한국투자신탁운용 | 상품전략부 경력직원 채용&#40;~26/01/11&#41; | 2026-01-11 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 홍보실 경력직원 채용공고&#40;~26/01/11&#41; | 2026-01-11 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 로버스트자산운용 | 글로벌매크로팀&#40;중국시장&#41; 인턴 채용&#40;~26/1/8까지&#41; | 2026-01-08 | [바로가기](http://robust.co.kr/) |
-| 한국투자신탁운용 | GIS운용본부 경력직원 채용공고&#40;~26/01/04&#41; | 2026-01-04 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 더블저축은행 본점 | 2025년 수시 채용 | 2025-12-21 | [바로가기](http://www.saramin.co.kr/zf_user/jobs/view/preview?rec_idx=52552850) |
-| 한국투자신탁운용 | 디지털마케팅부 경력직원 채용공고&#40;~12/21&#41; | 2025-12-21 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 상품개발부 경력직원 채용&#40;~12/14&#41; | 2025-12-14 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 상품전략부 경력직원 채용&#40;~12/07&#41; | 2025-12-07 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 트러스톤자산운용 | 퀀트운용 인턴 채용 | 2025-12-05 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=36479&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 트러스톤자산운용 | 펀드오퍼레이션 경력/신입 채용 | 2025-11-23 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=36293&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 트러스톤자산운용 | 컴플라이언스 신입 채용 | 2025-11-23 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=36292&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 중소기업은행 | 체험형 인턴 채용 | 2025-11-17 | [바로가기](https://ibk.incruit.com) |
-| 한국투자신탁운용 | 기간연장_글로벌전략운용부 경력직원 채용&#40;~11/16&#41; | 2025-11-16 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 대한저축은행 본점 | 2025년 신입/경력사원 채용&#40;수행기사&#41; | 2025-11-13 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=52028061&view_type=mail_landing) |
-| 한국투자신탁운용 | 소비자보호부 경력직원 채용&#40;~11/09&#41; | 2025-11-09 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 트러스톤자산운용 | 컴플라이언스 아르바이트 채용 | 2025-11-06 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=36077&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 삼성액티브자산운용 | 리서치센터 애널리스트 경력 채용 &#40;~10/31&#41; | 2025-10-31 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=35801&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국기업평가 | 신입 연구원 채용 | 2025-10-29 | [바로가기](http://www.korearatings.com) |
-| 로버스트자산운용 주식회사 | 글로벌매크로팀 인턴채용&#40;~10/24까지&#41; | 2025-10-24 | [바로가기](http://robust.co.kr/) |
-| 산은캐피탈 | [산은캐피탈] 2025년 하반기 신입직원 | 2025-10-13 | [바로가기](http://www.kdbc.co.kr/recruitPublic) |
-| 한국투자신탁운용 | 상품전략부 경력직원 채용&#40;~10/12&#41; | 2025-10-12 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | ETF운용부 경력직원 채용공고&#40;~10/12&#41; | 2025-10-12 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 2025년 하반기 신입사원 공개채용&#40;~10/10&#41; | 2025-10-10 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 키움캐피탈 | 각 부문&#40;심사/회계&#41; 정규직 채용공고 | 2025-10-09 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=51900414&recommend_ids=eJxdzrERQzEIA9Bp0oORQNQZxPtvERcfJxe6h%2BCADmOT2171ptNdwGAZapBhRA0YZ3RwSrpgghdK3Z3s6BjItdaFur5JZfSDMrjNHfV5zXbb%2BuPGNLLyN3%2B48QF%2BfzJG&view_type=search&searchword=%ED%82%A4%EC%9B%80%EC%BA%90%ED%94%BC%ED%83) |
-| 로버스트자산운용 | 글로벌매크로팀&#40;중국시장&#41; 인턴 채용&#40;~9/30까지&#41; | 2025-09-30 | [바로가기](http://robust.co.kr/) |
-| 더블저축은행 본점 | 2025년 경력직원 수시 채용 | 2025-09-29 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=51833548&recommend_ids=eJxNkLkNBEEIBKM5n%2BZt7A1k88%2FiRlppwCygHxGIqoK%2FBH71BMrOQAdLzv5iGug2CKJ7kB3B0aokl7agyIsE1Sc3M9vjonm3jDOlmqMNijsmiJmUdWzGVaPrlF4lS7BawbS3Mw8v5%2FDvG39V9UAy&view_type=mail_landing&gz=1&relayNonce=ab34449bc6f) |
-| 한국투자신탁운용 | ETF기관컨설팅부 경력직원 채용공고&#40;~9/28&#41; | 2025-09-28 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국증권금융 | FY25 하반기 신입사원 채용 | 2025-09-22 | [바로가기](https://www.ksfc.co.kr:4443/main.do) |
-| IBK기업은행 | 일반직원&#40;정규직&#41; 수시채용 | 2025-09-16 | [바로가기](https://ibk.incruit.com/) |
-| IBK기업은행 | 일반직 신입행원 채용 | 2025-09-15 | [바로가기](https://ibk.incruit.com/apply/?projectid=124) |
-| 한국투자신탁운용 | 디지털전략본부&#40;AI인력&#41; 경력직원 채용&#40;~9/14&#41; | 2025-09-14 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국기업평가 | 일반사무직원&#40;신입/경력&#41; 채용 | 2025-09-12 | [바로가기](http://www.korearatings.com) |
-| 더블저축은행 본점 | 2025년 수시 채용 | 2025-09-05 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=51692594&recommend_ids=eJxNj7kRA0EIBKORz%2FANYysQ5Z%2BFrs5Y1uxq6IJCuYfxN8CH30KpjPOgvZiqyLVtReDYmvCutYp2XLtM9cHO5NgOtwZaS8H6KptV7FUkkQddsuy1Dsiv1HRxMTC5qR7R9ubIp6VNjWXiwufD1%2F4BMW8%2F%2Fw%3D%3D&view_type=search&searchword=%EB%8D%9) |
-| 한국투자신탁운용 | 디지털전략본부&#40;AI인력&#41; 경력직원 채용&#40;~8/31&#41; | 2025-08-31 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| &#40;주&#41;삼호저축은행 | 삼호저축은행 신입.경력 직원 채용 | 2025-08-27 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/47505867?Oem_Code=C1) |
-| 트러스톤자산운용 | 대체운용지원 신입/경력 채용 | 2025-08-27 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=34986&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국기업평가 | 전문사무직원&#40;신입/경력&#41; 채용 | 2025-08-22 | [바로가기](http://www.korearatings.com) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-08-03 | [바로가기](https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042507230037&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet) |
-| 한국투자신탁운용 | FI운용본부&#40;채권운용&#41; 경력직원 채용&#40;~8/3&#41; | 2025-08-03 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 디지털마케팅부 경력직원 채용&#40;~7/20&#41; | 2025-07-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 트러스톤자산운용 | 경영지원 경력/인턴 채용 | 2025-07-16 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=34336&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 로버스트자산운용 | 글로벌매크로팀&#40;중국시장&#41; 인턴 채용&#40;~7/9까지&#41; | 2025-07-09 | [바로가기](http://robust.co.kr/) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-07-02 | [바로가기](https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042506260019&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet) |
-| 트러스톤자산운용 | 퀀트운용 경력 채용 | 2025-06-30 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=34040&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 키움캐피탈 | 투자금융부문 계약직 채용 | 2025-06-15 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/47079455?Oem_Code=C1) |
-| 한국투자신탁운용 | 홍보실 경력직원 채용&#40;~6/15&#41; | 2025-06-15 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 로버스트자산운용 주식회사 | 글로벌매크로팀 인턴채용&#40;~6/13까지&#41; | 2025-06-13 | [바로가기](http://robust.co.kr/) |
-| 한국투자신탁운용 | 전역장교 공개채용&#40;~6/13&#41; | 2025-06-13 | [바로가기](https://recruit.truefriend.com/announcementList) |
-| 한국투자신탁운용 | 2025년 채용연계형 인턴십 공개채용&#40;~6/9&#41; | 2025-06-09 | [바로가기](https://recruit.truefriend.com/announcementList) |
-| 트러스톤자산운용 | 하계 인턴 채용 | 2025-06-08 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=33808&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국투자신탁운용 | 글로벌주식운용부&#40;글로벌퀀트&#41; 경력직원 채용&#40;~6/8&#41; | 2025-06-08 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 더블저축은행 본점 | 2025년 수시 채용 | 2025-06-08 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=50849421&recommend_ids=eJxNj7ERQwEIQqdJLyqK9R8k%2B2%2BRuxRfy3cCAo0MOL8CPv3QskOaF6uIsEUPnxU3oD6YaPcXFTT2ehvRi0o5Y9FE5Ea5ZW0NsZA4Xp88fxUVdWsM64gDOFhmc6JKiR1IuR1xtU39rz8cJD%2FL&view_type=search&searchword=%EB%8D%94%EB%B8%94%EC%A0%80%) |
-| 한국투자신탁운용 | 소비자보호부 경력직원 채용&#40;~6/8&#41; | 2025-06-08 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 상품전략부 경력직원 채용&#40;~6/8&#41; | 2025-06-08 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | FI운용2부&#40;채권운용&#41; 경력직원 채용&#40;~6/1&#41; | 2025-06-01 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 경영관리실 경력직원 채용&#40;~5/28&#41; | 2025-05-28 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 로버스트자산운용 | 2025년 상반기 정규직 신입 채용 | 2025-05-28 | [바로가기](http://robust.co.kr/) |
-| 한국증권금융 | FY25 상반기 경력사원 채용 | 2025-05-26 | [바로가기](https://www.ksfc.co.kr:4443/main.do) |
-| 한국투자신탁운용 | 글로벌주식운용부 경력직원 채용&#40;~5/25&#41; | 2025-05-25 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-05-13 | [바로가기](https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042505070067&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet) |
-| 대한저축은행 본점 | 2025년 여신 신입/경력사원 채용 | 2025-05-09 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=50590081) |
-| 한국투자신탁운용 | ETF마케팅부 경력직원 채용&#40;~4/24&#41; | 2025-04-24 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 컴플라이언스부 경력직원 채용&#40;~4/24&#41; | 2025-04-24 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 글로벌전략운용부 경력직원 채용&#40;~4/21&#41; | 2025-04-21 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 대한저축은행 본점 | 2025년 신입/경력사원 채용 | 2025-04-18 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=50429045) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-04-16 | [바로가기](http://www.saramin.co.kr/zf_user/jobs/public/view?rec_idx=50442359) |
-| &#40;주&#41;융창저축은행 | 수신전담직원 및 개인신용대출 신입/경력직 채용공고 | 2025-04-16 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=50396299&t_ref=main&t_ref_content=special_recruit) |
-| 산은캐피탈 | [산은캐피탈] 2025년 신입직원 및 경력직원 채용 | 2025-04-13 | [바로가기](http://www.kdbc.co.kr/recruitPublic) |
-| 삼성액티브자산운용 | [삼성액티브자산운용] 리서치센터 애널리스트 경력 채용 | 2025-04-11 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=32977&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국투자신탁운용 | 콘텐츠마케팅부 경력직원 채용&#40;~4/10&#41; | 2025-04-10 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-04-07 | [바로가기](https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K130042503250030&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet) |
-| 더블저축은행 본점 | 2025년 상반기 채용 | 2025-04-03 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=50294249&recommend_ids=eJxdj7kRA0EIBKORP7wDtgJR%2Fllo79GxJbNhaCCAytT8lMiL74DSnbowbxSYL8SFaHd7ulK0rmcW3VoYFZon3mGqCacrTdXBSvxhTNgQlb6ZTc4zfnvVcturGT0q6fXgrkpybpZcpe2FIqpH5aWQA78HIz%2Bi&view_type=search&searchword=%EB%8D%94%EB%B8%94) |
-| 한국증권금융 | FY25 상반기 신입사원 채용 | 2025-03-31 | [바로가기](https://www.ksfc.co.kr:4443/main.do) |
-| 한국투자신탁운용 | 컴플라이언스부 경력직원 채용&#40;~3/31&#41; | 2025-03-31 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 트러스톤자산운용 | 리테일마케팅 경력 채용 | 2025-03-26 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=32742&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| IBK기업은행 | 일반직원&#40;정규직&#41; 수시채용 | 2025-03-25 | [바로가기](https://ibk.incruit.com/) |
-| 한국투자신탁운용 | 글로벌전략운용부 경력직원 채용&#40;~3/20&#41; | 2025-03-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | FI운용2부 경력직원 채용&#40;~3/20&#41; | 2025-03-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| IBK기업은행 | 일반직 신입행원 채용 | 2025-03-17 | [바로가기](https://ibk.incruit.com/apply/?projectid=122) |
-| 동원제일저축은행 | 신입/경력 직원 채용 공고 | 2025-03-16 | [바로가기](https://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=&wantedAuthNo=K130042503040085&rtnUrl=/empInfo/empInfoSrch/list/dtlEmpSrchList.do) |
-| 센트럴저축은행 | 총무&#40;전산&#41; 행원 채용공고 | 2025-03-14 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=50107887&view_type=etc&ref=recruit_manage) |
-| 센트럴저축은행 | 여신기업금융&#40;IB&#41; 영업행원 채용공고 | 2025-03-14 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/46534604?Oem_Code=C1) |
-| 센트럴저축은행 | 여신기업금융&#40;IB&#41; 영업행원 채용공고 | 2025-03-14 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=50107921&view_type=etc&ref=recruit_manage) |
-| 센트럴저축은행 | 총무&#40;전산&#41; 행원 채용공고 | 2025-03-14 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/46534614?Oem_Code=C1) |
-| &#40;주&#41;솔브레인저축은행 | 금융사무직 신입행원 채용 | 2025-03-14 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=50137891&view_type=etc) |
-| &#40;주&#41;삼호저축은행 | 삼호저축은행 신입.경력 직원 채용 | 2025-03-09 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/46545214?Oem_Code=C1) |
-| 키움캐피탈 | 기업금융 경력직&#40;정규직&#41; 채용 | 2025-03-09 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/46508244?Oem_Code=C1) |
-| 한국투자신탁운용 | WM마케팅부 경력직원 채용&#40;~3/6&#41; | 2025-03-06 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 글로벌AI운용부&#40;인프라&#41; 경력직원 채용&#40;~2/27&#41; | 2025-02-27 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 상품전략부 경력직원 채용&#40;~2/27&#41; | 2025-02-27 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 글로벌AI운용부 경력직원 채용&#40;~2/20&#41; | 2025-02-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | ETF운용부 경력직원 채용&#40;~2/20&#41; | 2025-02-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 컴플라이언스부 경력직원 채용&#40;~2/20&#41; | 2025-02-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 키움캐피탈 | 리테일금융&#40;신사업&#41; 경력직&#40;정규직&#41; 채용 | 2025-02-16 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=49876484&view_type=etc&ref=recruit_manage) |
-| 한국투자신탁운용 | 글로벌AI운용부 경력직원 채용&#40;~2/4&#41; | 2025-02-04 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 콘텐츠마케팅부 경력직원 채용&#40;~2/4&#41; | 2025-02-04 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 컴플라이언스부 경력직원 채용&#40;~1/30&#41; | 2025-01-30 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 글로벌전략운용부 경력직원 채용&#40;~1/30&#41; | 2025-01-30 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+## 설정
 
-<!-- END_JOBS -->
+프로젝트 실행 전, `.env` 파일을 생성하고 필요한 API 키를 입력해야 합니다:
+
+```env
+FSS_KEY="YOUR_FSS_API_KEY"
+ECOS_KEY="YOUR_ECOS_API_KEY"
+```
+
+- FSS API 키: [금융감독원 공공데이터포털](https://www.fss.or.kr/)에서 발급
+- ECOS API 키: [한국은행 경제통계시스템](https://ecos.bok.or.kr/)에서 발급
+
+### GitHub Actions 설정
+
+채용 공고 자동 업데이트를 사용하려면 GitHub Secrets에 다음을 설정해야 합니다:
+
+- `FSS_API_KEY`: 금융감독원 채용 정보 API 키
+
+## 참고사항
+
+- 이 프로젝트는 학습 목적으로 작성되었습니다.
+- API 호출 시 일일 제한이 있을 수 있으니 주의하세요.
+- Word 문서 생성 시 한글 폰트가 설치되어 있어야 합니다.
+- 채용 공고 자동 업데이트는 수업에서 배운 GitHub Actions의 cron 스케줄을 활용하여 매주 월요일 00:00 UTC(한국 시간 오전 9시)에 자동 실행됩니다.
