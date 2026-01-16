@@ -55,7 +55,7 @@ def generate_markdown_section(title, jobs):
 
 def update_readme(markdown_content):
     """README.md 파일의 내용을 새로운 채용 공고로 교체합니다."""
-    readme_path = 'Chapter_10/README.md'
+    readme_path = 'README.md'  # 루트 README.md 파일로 경로 변경
     placeholder_start = "<!-- START_JOBS -->"
     placeholder_end = "<!-- END_JOBS -->"
 
@@ -63,17 +63,19 @@ def update_readme(markdown_content):
         with open(readme_path, 'r', encoding='utf-8') as f:
             full_content = f.read()
 
-        if placeholder_start in full_content:
-            intro_content = full_content.split(placeholder_start)[0]
-        else:
-            intro_content = full_content # 플레이스홀더가 없으면 전체를 소개글로 간주
-
         now_utc = datetime.datetime.utcnow()
         now_kst = now_utc + datetime.timedelta(hours=9)
         header = f"## 📅 금융권 채용 공고 (최근 업데이트: {now_kst.strftime('%Y-%m-%d %H:%M:%S')})\n\n"
         jobs_section = f"{placeholder_start}\n{header}{markdown_content}\n{placeholder_end}"
 
-        final_content = intro_content + jobs_section
+        # 정규식을 사용하여 placeholder 사이의 내용만 교체
+        pattern = re.compile(f"{re.escape(placeholder_start)}.*?{re.escape(placeholder_end)}", re.DOTALL)
+        
+        if pattern.search(full_content):
+            final_content = pattern.sub(jobs_section, full_content)
+        else:
+            # 플레이스홀더가 없는 경우 파일 끝에 추가 (또는 다른 원하는 동작)
+            final_content = full_content + "\n" + jobs_section
 
         with open(readme_path, 'w', encoding='utf-8') as f:
             f.write(final_content)
@@ -81,7 +83,10 @@ def update_readme(markdown_content):
         print(f"Successfully wrote {len(final_content)} characters to {readme_path}")
 
     except FileNotFoundError:
-        print(f"Error: {readme_path} not found. Cannot update.")
+        # 루트에 README.md가 없는 경우를 대비해 새로 생성
+        with open(readme_path, 'w', encoding='utf-8') as f:
+            f.write(jobs_section)
+        print(f"Created {readme_path} and wrote {len(jobs_section)} characters.")
 
 
 if __name__ == "__main__":
