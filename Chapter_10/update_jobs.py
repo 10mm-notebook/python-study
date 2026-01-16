@@ -102,7 +102,7 @@ if __name__ == "__main__":
     # Fetch data for the past year in 30-day chunks
     # Start from 1 month in the future to cover current jobs and go back 1 year
     current_date_iterator = today + datetime.timedelta(days=30) 
-    end_of_historical_period = today - datetime.timedelta(days=365) 
+    end_of_historical_period = today - datetime.timedelta(days=90) 
 
     while current_date_iterator > end_of_historical_period:
         interval_end_date = current_date_iterator
