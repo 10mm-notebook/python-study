@@ -2,14 +2,18 @@
 .github/
 
 # Python
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-venv/
-env/
-ENV/
+**/venv/
+**/env/
+**/ENV/
+
+# Ignore .gitignore files in subdirectories
+**/.gitignore
+!.gitignore
 
 # IDE
 .vscode/
