@@ -1,4 +1,6 @@
-# GitHub Actions
+# Environment variables
+**/.env
+.env
 
 # Python
 **/__pycache__/
@@ -10,10 +12,6 @@
 **/env/
 **/ENV/
 
-# Ignore .gitignore files in subdirectories
-**/.gitignore
-!/.gitignore
-
 # IDE
 .vscode/
 .idea/
@@ -24,4 +22,3 @@
 # OS
 .DS_Store
 Thumbs.db
-

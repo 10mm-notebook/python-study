@@ -1,0 +1,57 @@
+# Chapter 7: 웹 스크래핑 (Playwright, Plotly)
+playwright==1.53.0
+pandas==2.3.1
+plotly==6.2.0
+kaleido==1.0.0
+numpy==2.0.2
+
+# Chapter 9, 10, 11: 공공 API 데이터 수집
+datakart
+
+# Chapter 9, 10, 11: 환경 변수 관리
+python-dotenv
+
+# Chapter 9, 10, 11: 데이터 시각화
+matplotlib
+seaborn
+
+# Chapter 9, 10: Excel 파일 처리
+openpyxl
+
+# Chapter 9, 10: HTTP 요청
+requests
+
+# Chapter 10: Word 문서 생성
+python-docx
+
+# Chapter 11: 지리 공간 데이터 처리
+geopandas
+
+# Chapter 11: 진행률 표시
+tqdm
+
+# Chapter 7 의존성 패키지들
+attrs==25.3.0
+choreographer==1.0.9
+fastjsonschema==2.21.1
+greenlet==3.2.3
+jsonschema==4.25.0
+jsonschema-specifications==2025.4.1
+jupyter_core==5.8.1
+logistro==1.1.0
+narwhals==1.47.1
+nbformat==5.10.4
+orjson==3.11.0
+packaging==25.0
+platformdirs==4.3.8
+pyee==13.0.0
+python-dateutil==2.9.0.post0
+pytz==2025.2
+pywin32==311
+referencing==0.36.2
+rpds-py==0.26.0
+simplejson==3.20.1
+six==1.17.0
+traitlets==5.14.3
+typing_extensions==4.14.1
+tzdata==2025.2
