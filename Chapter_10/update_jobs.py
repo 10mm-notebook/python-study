@@ -4,6 +4,7 @@ import os
 import requests
 import datetime
 import re
+from dotenv import load_dotenv
 
 def fetch_job_postings(api_key, start_date, end_date):
     """금융감독원 API를 호출하여 지정된 기간의 채용 공고를 가져옵니다."""
@@ -54,8 +55,9 @@ def generate_markdown_section(title, jobs):
     return table
 
 def update_readme(markdown_content):
-    """README.md 파일의 내용을 새로운 채용 공고로 교체합니다."""
-    readme_path = 'README.md'  # 루트 README.md 파일로 경로 변경
+    """Chapter_10/README.md 파일의 내용을 새로운 채용 공고로 교체합니다."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    readme_path = os.path.join(script_dir, 'README.md')
     placeholder_start = "<!-- START_JOBS -->"
     placeholder_end = "<!-- END_JOBS -->"
 
@@ -90,6 +92,9 @@ def update_readme(markdown_content):
 
 
 if __name__ == "__main__":
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    load_dotenv(os.path.join(script_dir, ".env"))
+
     api_key = os.getenv("FSS_API_KEY")
     
     if not api_key:
@@ -134,6 +139,11 @@ if __name__ == "__main__":
     for job in all_jobs:
         end_day_str = job.get('recpEndDay')
         
+        # '9999-12-31'은 관행적으로 '채용 시'를 의미하므로 표시를 정규화
+        if end_day_str == '9999-12-31':
+            end_day_str = '채용 시 마감감'
+            job['recpEndDay'] = end_day_str
+        
         if end_day_str == '채용 시': # 마감일이 '채용 시'인 경우
             current_jobs.append(job)
         elif not end_day_str: # 마감일이 아예 없는 경우
@@ -151,7 +161,7 @@ if __name__ == "__main__":
 
     # 마크다운 생성
     current_section = generate_markdown_section("🚀 진행 중인 공고", current_jobs)
-    closed_section = generate_markdown_section("✅ 최근 마감된 공고", closed_jobs)
+    closed_section = generate_markdown_section("✅ 최근 마감된 공고 (90일 이내)", closed_jobs)
     
     final_markdown = current_section + "\n" + closed_section
     
