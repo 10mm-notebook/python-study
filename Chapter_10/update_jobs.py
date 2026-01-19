@@ -141,7 +141,7 @@ if __name__ == "__main__":
         
         # '9999-12-31'은 관행적으로 '채용 시'를 의미하므로 표시를 정규화
         if end_day_str == '9999-12-31':
-            end_day_str = '채용 시 마감감'
+            end_day_str = '채용 시 마감'
             job['recpEndDay'] = end_day_str
         
         if end_day_str == '채용 시': # 마감일이 '채용 시'인 경우
