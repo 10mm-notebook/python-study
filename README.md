@@ -19,7 +19,7 @@
 - **주요 기술**: Datakart, Pandas, Python-docx, Matplotlib
 - **내용**: 금융감독원 FSS API와 한국은행 ECOS API를 활용하여 금융 상품 정보 및 금리 데이터를 수집하고, Word 문서로 자동 생성
 - **추가 미니 프로젝트**: GitHub Actions를 활용한 금융권 채용 공고 자동 업데이트 시스템
-- **자세한 내용**: [Chapter_10/README.md](./Chapter_10/README.md)
+- **자세한 내용**: [Chapter_10/README.md](./Chapter_10/README_PROJECT.md)
 
 ### Chapter 11: 공공 API를 활용한 부동산 데이터 분석 및 지도 시각화
 - **주요 기술**: Datakart, Geopandas, Pandas, Matplotlib, Seaborn
