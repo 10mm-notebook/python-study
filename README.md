@@ -8,6 +8,7 @@
 ### Chapter 07: 웹 스크래핑을 활용한 주식 데이터 수집 및 분석
 - **주요 기술**: Playwright, Pandas, Plotly
 - **내용**: 네이버 금융에서 코스피 시가총액 데이터를 웹 스크래핑하고, 시가총액 기반 상위 종목을 분석하여 트리맵으로 시각화
+- **추가 미니 프로젝트**: AI 기반 주식 유형 분석기 (Streamlit) - K-Means 클러스터링과 t-SNE를 활용한 주식 그룹화 및 OpenAI GPT를 통한 투자 전략 분석
 - **자세한 내용**: [Chapter_07/README.md](./Chapter_07/README.md)
 
 ### Chapter 09: 공공 API를 활용한 경제 지표 데이터 수집 및 시각화
@@ -68,6 +69,9 @@ playwright install chromium
 - **데이터 수집**: `playwright`, `datakart`, `requests`
 - **데이터 처리**: `pandas`, `numpy`
 - **데이터 시각화**: `plotly`, `matplotlib`, `seaborn`, `geopandas`
+- **머신러닝**: `scikit-learn`
+- **웹 애플리케이션**: `streamlit`
+- **AI/LLM**: `openai`
 - **문서 생성**: `python-docx`
 - **파일 처리**: `openpyxl`
 - **기타**: `python-dotenv`, `tqdm`, `kaleido`
@@ -77,6 +81,11 @@ playwright install chromium
 ## ⚙️ 환경 변수 설정
 
 각 챕터의 프로젝트를 실행하기 전에 `.env` 파일을 생성하고 필요한 API 키를 설정해야 합니다.
+
+### Chapter 7 (미니프로젝트)
+```env
+OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+```
 
 ### Chapter 9
 ```env
@@ -97,6 +106,7 @@ SGIS_SECRET="YOUR_SGIS_API_SECRET"
 ```
 
 ### API 키 발급 사이트
+- **OpenAI API**: [OpenAI Platform](https://platform.openai.com/api-keys) (Chapter 7 미니프로젝트)
 - **ECOS API**: [한국은행 경제통계시스템](https://ecos.bok.or.kr/)
 - **FSS API**: [금융감독원 공공데이터포털](https://www.fss.or.kr/)
 - **공공데이터포털**: [data.go.kr](https://www.data.go.kr/)
@@ -107,6 +117,7 @@ SGIS_SECRET="YOUR_SGIS_API_SECRET"
 각 챕터의 README 파일에서 상세한 실행 방법을 확인할 수 있습니다:
 
 - [Chapter 07 실행 방법](./Chapter_07/README.md#실행-순서)
+- [Chapter 07 미니프로젝트 실행 방법](./Chapter_07/README.md#미니프로젝트-ai-기반-주식-유형-분석기-apppy)
 - [Chapter 09 실행 방법](./Chapter_09/README.md#실행-순서)
 - [Chapter 10 실행 방법](./Chapter_10/README_PROJECT.md#실행-순서)
 - [Chapter 11 실행 방법](./Chapter_11/README.md#실행-순서)
