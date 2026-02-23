@@ -57,7 +57,7 @@ def generate_markdown_section(title, jobs):
 def update_readme(markdown_content):
     """Chapter_10/README.md 파일의 채용 공고 섹션을 새로운 내용으로 교체합니다."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    readme_path = os.path.join(script_dir, 'README.md')
+    readme_path = os.path.join(script_dir, 'Chapter_10/README.md')
     placeholder_start = "<!-- START_JOBS -->"
     placeholder_end = "<!-- END_JOBS -->"
 
