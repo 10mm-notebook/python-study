@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install requests python-dotenv  # dotenv 모듈 설치
 
       - name: Run script to update README
         env:
@@ -32,15 +32,15 @@ jobs:
 
       - name: Display README content for debugging
         run: |
-          echo "--- Content of README.md after script run ---"
-          cat README.md
+          echo "--- Content of Chapter_10/README.md after script run ---"
+          cat Chapter_10/README.md
           echo "--------------------------------------------------------"
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md
+          git add Chapter_10/README.md
           if ! git diff --staged --quiet; then
             git commit -m "chore: 주간 채용 공고 업데이트"
             git push
