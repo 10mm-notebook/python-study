@@ -33,7 +33,7 @@ jobs:
       - name: Display README content for debugging
         run: |
           echo "--- Content of README.md after script run ---"
-          cat README.md
+          cat Chapter_10/README.md
           echo "--------------------------------------------------------"
 
       - name: Commit and push changes
