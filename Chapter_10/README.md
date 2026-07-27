@@ -6,20 +6,19 @@
 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 만든 미니프로젝트입니다.
 
 <!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-07-20 11:51:49)
+## 📅 금융권 채용 공고 (최근 업데이트: 2026-07-27 11:50:05)
 
 ### 🚀 진행 중인 공고
+
+- 해당 기간에 공고가 없습니다.
+
+### ✅ 최근 마감된 공고 (90일 이내)
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
 | 한국투자신탁운용 | 해외투자운용부 경력직원 채용공고&#40;~7/26&#41; | 2026-07-26 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54429338&view_type=etc&ref=recruit_manage) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49569216?Oem_Code=1) |
-
-### ✅ 최근 마감된 공고 (90일 이내)
-
-| 기관명 | 제목 | 마감일 | 링크 |
-|---|---|---|---|
 | 한국투자신탁운용 | 글로벌퀀트운용부 경력직원 채용공고&#40;~7/19&#41;&#40;기간연장 | 2026-07-19 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 삼호저축은행 | 신입.경력 직원 채용 | 2026-07-08 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49492760?Oem_Code=C1) |
 | 한국투자신탁운용 | 상품개발부 경력직원&#40;휴직대체 계약직&#41; 채용&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
@@ -38,10 +37,5 @@
 | 키움캐피탈 | 기업금융부문 경력직&#40;정규직&#41; 채용 | 2026-05-25 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49132439?Oem_Code=C1) |
 | 키움캐피탈 | 업무지원직 채용 | 2026-05-25 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49122688?Oem_Code=C1) |
 | 한국투자신탁운용 | 상품개발부 경력직원 채용&#40;~5/17&#41; | 2026-05-17 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 중소기업은행 | 체험형 인턴 채용 | 2026-05-13 | [바로가기](https://ibk.incruit.com) |
-| 한국투자신탁운용 | ETF디지털마케팅부 경력직원 채용공고&#40;~5/10&#41; | 2026-05-10 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 컴플라이언스부 경력직원 채용공고&#40;~5/10&#41; | 2026-05-10 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 글로벌대체투자1부 경력직원 채용공고 | 2026-05-10 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 더블저축은행 본점 | 2026년 수시 채용 | 2026-05-05 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=53686173&view_type=public-recruit) |
 
 <!-- END_JOBS -->
