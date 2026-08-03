@@ -6,23 +6,27 @@
 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 만든 미니프로젝트입니다.
 
 <!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-07-27 11:50:05)
+## 📅 금융권 채용 공고 (최근 업데이트: 2026-08-03 11:42:11)
 
 ### 🚀 진행 중인 공고
 
-- 해당 기간에 공고가 없습니다.
+| 기관명 | 제목 | 마감일 | 링크 |
+|---|---|---|---|
+| 한국투자신탁운용 | IT개발 경력직원 채용공고&#40;~8/9&#41; | 2026-08-09 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 
 ### ✅ 최근 마감된 공고 (90일 이내)
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
+| 센트럴저축은행 | 경력 행원 채용공고 | 2026-07-31 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54461957&view_type=etc&ref=recruit_manage) |
+| 센트럴저축은행 | 경력 행원 채용공고 | 2026-07-31 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49588348?Oem_Code=C1) |
 | 한국투자신탁운용 | 해외투자운용부 경력직원 채용공고&#40;~7/26&#41; | 2026-07-26 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54429338&view_type=etc&ref=recruit_manage) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49569216?Oem_Code=1) |
 | 한국투자신탁운용 | 글로벌퀀트운용부 경력직원 채용공고&#40;~7/19&#41;&#40;기간연장 | 2026-07-19 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 삼호저축은행 | 신입.경력 직원 채용 | 2026-07-08 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49492760?Oem_Code=C1) |
-| 한국투자신탁운용 | 상품개발부 경력직원&#40;휴직대체 계약직&#41; 채용&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 한국투자신탁운용 | 상품개발부 경력직원 채용공고&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 한국투자신탁운용 | 상품개발부 경력직원&#40;휴직대체 계약직&#41; 채용&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 로버스트자산운용 | 글로벌매크로팀&#40;중국시장&#41; 인턴 채용&#40;~7/5까지&#41; | 2026-07-05 | [바로가기](http://robust.co.kr/) |
 | 더블저축은행 본점 | 2026년 수시 채용 | 2026-07-01 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54270613&view_type=public-recruit#seq=0) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 컴플 경력사원 채용&#40;~6/30&#41; | 2026-06-30 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=40495&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
