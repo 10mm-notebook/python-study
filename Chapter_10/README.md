@@ -6,7 +6,7 @@
 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 만든 미니프로젝트입니다.
 
 <!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-08-10 10:42:38)
+## 📅 금융권 채용 공고 (최근 업데이트: 2026-08-17 10:10:45)
 
 ### 🚀 진행 중인 공고
 
@@ -19,8 +19,8 @@
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
 | 한국투자신탁운용 | IT개발 경력직원 채용공고&#40;~8/9&#41; | 2026-08-09 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 센트럴저축은행 | 경력 행원 채용공고 | 2026-07-31 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49588348?Oem_Code=C1) |
 | 센트럴저축은행 | 경력 행원 채용공고 | 2026-07-31 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54461957&view_type=etc&ref=recruit_manage) |
+| 센트럴저축은행 | 경력 행원 채용공고 | 2026-07-31 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49588348?Oem_Code=C1) |
 | 한국투자신탁운용 | 해외투자운용부 경력직원 채용공고&#40;~7/26&#41; | 2026-07-26 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49569216?Oem_Code=1) |
 | 센트럴저축은행 | 신입 행원 채용공고 | 2026-07-24 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54429338&view_type=etc&ref=recruit_manage) |
