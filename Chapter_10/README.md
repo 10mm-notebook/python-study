@@ -6,21 +6,25 @@
 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 만든 미니프로젝트입니다.
 
 <!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-09-07 12:03:46)
+## 📅 금융권 채용 공고 (최근 업데이트: 2026-09-14 12:32:32)
 
 ### 🚀 진행 중인 공고
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
+| 한국투자신탁운용 | 기관영업부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 한국투자신탁운용 | 연금마케팅부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 한국투자신탁운용 | 해외투자전략부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 로버스트자산운용 | [로버스트자산운용]글로벌매크로팀 인턴 채용&#40;~9/14&#41; | 2026-09-14 | [바로가기](http://robust.co.kr/) |
 | IBK기업은행 | 일반직 신입행원 채용 | 2026-09-14 | [바로가기](http://ibk.incruit.com/hire/viewhire.asp?projectid=128) |
-| 삼성액티브자산운용 | 리서치센터 경력사원 채용&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=42002&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국투자신탁운용 | 해외투자지원부 경력직원 채용공고&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 로버스트자산운용 | [로버스트자산운용] 글로벌매크로팀&#40;중국시장&#41; 인턴 채용 | 2026-09-10 | [바로가기](http://robust.co.kr/) |
 
 ### ✅ 최근 마감된 공고 (90일 이내)
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
+| 삼성액티브자산운용 | 리서치센터 경력사원 채용&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=42002&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
+| 한국투자신탁운용 | 해외투자지원부 경력직원 채용공고&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 로버스트자산운용 | [로버스트자산운용] 글로벌매크로팀&#40;중국시장&#41; 인턴 채용 | 2026-09-10 | [바로가기](http://robust.co.kr/) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 운용2본부 경력사원 채용&#40;~9/6 | 2026-09-06 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=41891&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
 | 한국투자신탁운용 | 경영관리실 경력직원 채용공고&#40;~9/6&#41; | 2026-09-06 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 운용1본부 경력사원 채용&#40;~9/6 | 2026-09-06 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=41829&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
@@ -38,10 +42,7 @@
 | 삼호저축은행 | 신입.경력 직원 채용 | 2026-07-08 | [바로가기](https://www.jobkorea.co.kr/Recruit/GI_Read/49492760?Oem_Code=C1) |
 | 한국투자신탁운용 | 상품개발부 경력직원&#40;휴직대체 계약직&#41; 채용&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 한국투자신탁운용 | 상품개발부 경력직원 채용공고&#40;~7/5&#41; | 2026-07-05 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 로버스트자산운용 | 글로벌매크로팀&#40;중국시장&#41; 인턴 채용&#40;~7/5까지&#41; | 2026-07-05 | [바로가기](http://robust.co.kr/) |
 | 더블저축은행 본점 | 2026년 수시 채용 | 2026-07-01 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54270613&view_type=public-recruit#seq=0) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 컴플 경력사원 채용&#40;~6/30&#41; | 2026-06-30 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=40495&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 로버스트자산운용 | 글로벌매크로운용팀 인턴 채용&#40;~6/18까지&#41; | 2026-06-18 | [바로가기](http://robust.co.kr/) |
-| 삼성액티브자산운용 | [삼성액티브자산운용] ETF/펀드 컨설팅 경력 채용 | 2026-06-16 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=40335&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
 
 <!-- END_JOBS -->
