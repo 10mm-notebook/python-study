@@ -6,19 +6,21 @@
 책에서 배운 금융감독원 FSS API 사용법과 수업시간에 배운 GitHub Actions + crontab을 응용하여 만든 미니프로젝트입니다.
 
 <!-- START_JOBS -->
-## 📅 금융권 채용 공고 (최근 업데이트: 2026-11-09 13:48:41)
+## 📅 금융권 채용 공고 (최근 업데이트: 2026-11-16 13:55:07)
 
 ### 🚀 진행 중인 공고
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
+| 한국투자신탁운용 | 해외투자전략부 경력직원 채용공고&#40;~11/29&#41; | 2026-11-29 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 융창저축은행 | 수신전담/디지털 개인금융 신입 및 경력 채용공고 | 2026-11-22 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55502482&view_type=public-recruit#seq=0) |
 | 중소기업은행 | 체험형 인턴 채용 | 2026-11-16 | [바로가기](https://ibk.incruit.com) |
-| 한국투자신탁운용 | 해외투자운용부 경력직원 채용공고&#40;~11/15&#41; | 2026-11-15 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 
 ### ✅ 최근 마감된 공고 (90일 이내)
 
 | 기관명 | 제목 | 마감일 | 링크 |
 |---|---|---|---|
+| 한국투자신탁운용 | 해외투자운용부 경력직원 채용공고&#40;~11/15&#41; | 2026-11-15 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 로버스트자산운용&#40;주&#41; | [로버스트자산운용] 2026년 하반기 정규직 신입 채용 | 2026-10-28 | [바로가기](http://robust.co.kr/) |
 | 한국투자신탁운용 | 해외투자전략부 경력직원 채용공고&#40;~10/18&#41; | 2026-10-18 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 한국투자신탁운용 | 상품전략부 경력직원 채용공고&#40;~10/18&#41; | 2026-10-18 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
@@ -27,17 +29,16 @@
 | 산은캐피탈 | [산은캐피탈] 2026년 하반기 신입직원 채용 | 2026-10-12 | [바로가기](http://www.kdbc.co.kr/recruitPublic) |
 | 한국증권금융 | FY26 하반기 신입사원 채용 | 2026-09-21 | [바로가기](https://www.ksfc.co.kr:4443/main.do) |
 | 한국투자신탁운용 | 해외투자전략부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
-| 한국투자신탁운용 | 연금마케팅부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 한국투자신탁운용 | 기관영업부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
+| 한국투자신탁운용 | 연금마케팅부 경력직원 채용공고&#40;~9/20&#41; | 2026-09-20 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 로버스트자산운용 | [로버스트자산운용]글로벌매크로팀 인턴 채용&#40;~9/14&#41; | 2026-09-14 | [바로가기](http://robust.co.kr/) |
 | IBK기업은행 | 일반직 신입행원 채용 | 2026-09-14 | [바로가기](http://ibk.incruit.com/hire/viewhire.asp?projectid=128) |
 | 삼성액티브자산운용 | 리서치센터 경력사원 채용&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=42002&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
 | 한국투자신탁운용 | 해외투자지원부 경력직원 채용공고&#40;~9/13&#41; | 2026-09-13 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 로버스트자산운용 | [로버스트자산운용] 글로벌매크로팀&#40;중국시장&#41; 인턴 채용 | 2026-09-10 | [바로가기](http://robust.co.kr/) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 운용2본부 경력사원 채용&#40;~9/6 | 2026-09-06 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=41891&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
-| 한국투자신탁운용 | 경영관리실 경력직원 채용공고&#40;~9/6&#41; | 2026-09-06 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 삼성액티브자산운용 | [삼성액티브자산운용] 운용1본부 경력사원 채용&#40;~9/6 | 2026-09-06 | [바로가기](https://www.kofia.or.kr/brd/m_96/view.do?seq=41829&srchFr=&srchTo=&srchWord=&srchTp=&multi_itm_seq=0&itm_seq_1=0&itm_seq_2=0&company_cd=&company_nm=) |
+| 한국투자신탁운용 | 경영관리실 경력직원 채용공고&#40;~9/6&#41; | 2026-09-06 | [바로가기](https://kim.koreainvestment.com/recruit/recruit2) |
 | 솔브레인저축은행 | 금융사무직 &#40;신입 및 경력&#41; 채용 | 2026-08-31 | [바로가기](https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=54771427&recommend_ids=eJxFjbsVgDAMA6ehtyx%2FoppB2H8LKOJQ3ruznMEq1Xrs6juDjbTeAMlDxyxhMqdIjBHMT6YGDyyk%2B9y0ATWgZp3MOpobIpKaP2FizcC3TdOfRXzmBbgpKbk%3D&view_type=search&searchword=%EC%86%94%EB%B8%8C%EB%A0%88%EC%9D%B8%EC%A0%80%EC%B6%) |
-| 한국증권금융 | FY26 하반기 경력사원 채용 | 2026-08-24 | [바로가기](https://www.ksfc.co.kr:4443/main.do) |
 
 <!-- END_JOBS -->
